@@ -1,0 +1,10 @@
+.editor {
+  width: 100%;
+  outline: none;
+
+  &>div {
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
