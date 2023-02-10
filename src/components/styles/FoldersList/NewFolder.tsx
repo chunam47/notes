@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const NewFolderForm = styled.form`
   position: relative;
@@ -9,8 +9,8 @@ export const NewFolderForm = styled.form`
 
 export const NewFolderInput = styled.input.attrs({
   autoFocus: true,
-  type: 'text',
-  'aria-label': 'Edit folder name',
+  type: "text",
+  "aria-label": "Edit folder name",
 })`
   outline: none;
   width: 99%;
@@ -31,7 +31,7 @@ export const Overlay = styled.div`
 `;
 
 export const NewFolderButton = styled.button.attrs({
-  'aria-label': 'Add New Folder',
+  "aria-label": "Add New Folder",
 })`
   position: absolute;
   bottom: 0;
@@ -39,7 +39,7 @@ export const NewFolderButton = styled.button.attrs({
   font-size: 16px;
   background-color: #ecebeb;
   display: flex;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
   align-items: center;
   padding: 0.5em 0.5em;
   color: #000;

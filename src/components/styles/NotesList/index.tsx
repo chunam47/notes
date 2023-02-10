@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const RootNotesListWrapper = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ export const LinkWrapper = styled.div<{
   }
 
   a::before {
-    content: '';
+    content: "";
     background: ${({ tagColor }) => tagColor};
     border-radius: 0px 2px 2px 0px;
     width: 20px;
@@ -69,5 +69,17 @@ export const AddNoteButton = styled.div`
 
   svg {
     display: block;
+  }
+`;
+
+export const NoNoteWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background-color: #4e4e4e;
+    color: #fff;
   }
 `;

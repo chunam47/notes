@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import Modal from 'react-modal';
-import { ButtonText, NewFolderButton } from '../styles/FoldersList/NewFolder';
-import BaseModal from '@components/BaseModal';
-import './index.scss';
-import FolderPlus from '@assets/icons/FolderPlus';
-import { createFolder, Folder } from '@redux/notes';
-import { useAppDispatch } from '@redux';
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import Modal from "react-modal";
+import { ButtonText, NewFolderButton } from "../styles/FoldersList/NewFolder";
+import BaseModal from "@components/BaseModal";
+import "./index.scss";
+import FolderPlus from "@assets/icons/FolderPlus";
+import { createFolder, Folder } from "@redux/notes";
+import { useAppDispatch } from "@redux";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
   },
 };
 
 const NewFolder = () => {
   const [modal, setModal] = useState(false);
-  const [nameFolder, setNameFolder] = useState('');
+  const [nameFolder, setNameFolder] = useState("");
   const dispatch = useAppDispatch();
   const openModal = () => {
     setModal(true);
@@ -34,7 +34,7 @@ const NewFolder = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const trimmedValue = nameFolder.trim();
-    if (trimmedValue === '') {
+    if (trimmedValue === "") {
       return;
     } else {
       const id = crypto.randomUUID();
@@ -42,7 +42,7 @@ const NewFolder = () => {
       const notes = [];
       let folder: Folder = { id, title, notes };
       dispatch(createFolder(folder));
-      setNameFolder('');
+      setNameFolder("");
       setModal(false);
     }
   };
@@ -65,7 +65,17 @@ const NewFolder = () => {
                 onChange={(e) => setNameFolder(e.target.value)}
               />
             </label>
-            <button onClick={(event) => handleSubmit(event)}>Submit</button>
+            <div className="button-new-folder">
+              <button
+                className="button-submit"
+                onClick={(event) => handleSubmit(event)}
+              >
+                Submit
+              </button>
+              <button className="button-close" onClick={closeModal}>
+                Close
+              </button>
+            </div>
           </form>
         </div>
       </BaseModal>

@@ -2,22 +2,23 @@ import {
   AddNoteButton,
   CalendarWrapper,
   LinkWrapper,
+  NoNoteWrapper,
   RootNotesListWrapper,
-} from '../styles/NotesList';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import iconCalendar from '../../assets/calendar.png';
-import { TitleWrapper } from '../styles';
-import React, { useEffect, useMemo, useState } from 'react';
-import Filter from '@components/Filter';
-import { getRandomHexColor } from '@utils/color';
-import Header from '@components/Header';
-import { useSelector } from 'react-redux';
-import { RootState } from '@redux';
-import OutlinePlus from '@assets/icons/OutlinePlus';
-import ChevronRight from '@assets/icons/ChevronRight';
+} from "../styles/NotesList";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import iconCalendar from "../../assets/calendar.png";
+import { TitleWrapper } from "../styles";
+import React, { useEffect, useMemo, useState } from "react";
+import Filter from "@components/Filter";
+import { getRandomHexColor } from "@utils/color";
+import Header from "@components/Header";
+import { useSelector } from "react-redux";
+import { RootState } from "@redux";
+import OutlinePlus from "@assets/icons/OutlinePlus";
+import ChevronRight from "@assets/icons/ChevronRight";
 
 const NotesList = () => {
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
   const params = useParams();
   const folders = useSelector((state: RootState) => state.noteReducer);
   const folder = folders.find((folder) => folder.id === params.id);
@@ -36,14 +37,15 @@ const NotesList = () => {
         <Header
           title={folder?.title}
           leftContent={
-            <div onClick={() => navigate('/')}>
+            <div onClick={() => navigate("/")}>
               <ChevronRight
                 className="font-semibold rotate-180"
                 width="20"
                 height="20"
               />
             </div>
-          }></Header>
+          }
+        ></Header>
         <Filter setTextFilter={setFilter}></Filter>
         {notes?.length > 0 ? (
           <>
@@ -62,10 +64,20 @@ const NotesList = () => {
             ))}
           </>
         ) : (
-          <p className="text-black text-center">No data</p>
+          <NoNoteWrapper>
+            <p className="text-black text-center">You have no notes</p>
+            <button
+              onClick={() =>
+                navigate(`/note/${folder?.id}/${crypto.randomUUID()}`)
+              }
+            >
+              Create One Now
+            </button>
+          </NoNoteWrapper>
         )}
         <AddNoteButton
-          onClick={() => navigate(`/note/${folder?.id}/${crypto.randomUUID()}`)}>
+          onClick={() => navigate(`/note/${folder?.id}/${crypto.randomUUID()}`)}
+        >
           <OutlinePlus />
         </AddNoteButton>
       </RootNotesListWrapper>

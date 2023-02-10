@@ -4,3 +4,19 @@
   left: 0;
   right: 0;
 }
+
+.button-new-folder {
+  display: flex;
+  .button-submit {
+    width: 100%;
+    color: #fff;
+    background-color: #1677ff;
+  }
+
+  .button-close {
+    width: 100%;
+    background-color: #fff;
+    color: #ff4d4f;
+    border-color: #ff4d4f;
+  }
+}
