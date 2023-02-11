@@ -4,12 +4,11 @@
   max-width: 100vw;
   overflow: hidden;
 }
-
-.editor-wrapper {
-  padding-left: 3rem;
+.ce-block__content {
+  // margin: unset;
 }
-
-#tippy-15 {
-  width: 100%;
-  overflow-x: hidden;
+.ce-inline-tool svg,
+.ce-inline-toolbar__dropdown-content svg {
+  width: auto;
+  height: auto;
 }

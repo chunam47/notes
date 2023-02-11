@@ -9,7 +9,11 @@ import {
 export type Note = {
   id: string;
   created_at: string;
-  content: string;
+  content: {
+    time?: number;
+    blocks: any;
+    version?: string;
+  };
   title: string;
 };
 
@@ -73,6 +77,8 @@ export const noteMiddleware =
       console.log("save new note");
       const notes = store.getState().noteReducer;
       localStorage.setItem("notes", JSON.stringify(notes));
+
+      console.log("hihihi", notes);
     }
     return nextAction;
   };
